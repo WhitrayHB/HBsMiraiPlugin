@@ -22,7 +22,7 @@ public class GrassPic extends JRawCommand {
         super(HBsPluginMain.INSTANCE,"grass-pic","来张草图","生草");
         this.setDescription("来张草图");
         this.setPrefixOptional(true);
-        this.setUsage("(/)grass-pic");
+        this.setUsage("(/)生草 #来张草图");
     }
     @Override
     public void onCommand(@NotNull CommandSender sender, @NotNull MessageChain args){
