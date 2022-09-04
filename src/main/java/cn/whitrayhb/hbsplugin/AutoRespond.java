@@ -33,9 +33,9 @@ public class AutoRespond {
             }
             if (message.trim().equals("114514")) g.getGroup().sendMessage("1919810");
             if (message.trim().equals("1919810")) g.getGroup().sendMessage("114514");
+            else if (message.contains("撅鸽子")||message.contains("撅爆鸽子")) g.getGroup().sendMessage("我先把你撅爆再说（恼）");
             else if (message.contains("鸽子")) g.getGroup().sendMessage("谁叫我");
             else if (message.contains("咕咕咕")) g.getGroup().sendMessage("咕咕咕~");
-            else if (message.contains("撅鸽子")||message.contains("撅爆鸽子")) g.getGroup().sendMessage("我先把你撅爆再说（恼）");
         });
         eventChannel.subscribeAlways(FriendMessageEvent.class, f -> {
         });

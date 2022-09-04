@@ -56,6 +56,9 @@ public class GrassPic extends JRawCommand {
         int size;
         String[] arrUrl = inUrl.split("/");
         String name = arrUrl[arrUrl.length-1];
+        if(new File(path+"/"+name).exists()){
+            return path+"/"+name;
+        }
         try{
             File file = new File(path);
             if(!file.exists()) file.mkdirs();
