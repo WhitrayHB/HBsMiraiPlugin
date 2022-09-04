@@ -23,8 +23,8 @@ public class AutoRespond {
         eventChannel.subscribeAlways(GroupMessageEvent.class, g -> {
             String message = g.getMessage().contentToString();
             if (message.startsWith("摸")) return;
-            if (message.startsWith("哼哼")||message.endsWith("哼哼哼")){
-                int count=searchCount("哼",message);
+            if (message.startsWith("哼哼")||message.endsWith("哼哼")){
+                int count = searchCount("哼", message);
                 String content="啊啊啊啊啊啊";
                 for (int i=0;i<count;i++){
                     content+="啊";
