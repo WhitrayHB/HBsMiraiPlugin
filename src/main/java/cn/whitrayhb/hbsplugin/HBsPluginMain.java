@@ -1,17 +1,10 @@
 package cn.whitrayhb.hbsplugin;
 
-import cn.whitrayhb.hbsplugin.AutoRespond;
 import cn.whitrayhb.hbsplugin.command.GrassPic;
-import cn.whitrayhb.hbsplugin.command.Say;
 import net.mamoe.mirai.console.command.CommandManager;
 import net.mamoe.mirai.console.plugin.jvm.JavaPlugin;
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription;
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescriptionBuilder;
-import net.mamoe.mirai.event.Event;
-import net.mamoe.mirai.event.EventChannel;
-import net.mamoe.mirai.event.GlobalEventChannel;
-import net.mamoe.mirai.event.events.FriendMessageEvent;
-import net.mamoe.mirai.event.events.GroupMessageEvent;
 
 
 /**
@@ -41,7 +34,6 @@ public final class HBsPluginMain extends JavaPlugin {
     @Override
     public void onEnable() {
         autoRespond.onEnable();
-        //CommandManager.INSTANCE.registerCommand(Say.INSTANCE,true);
         CommandManager.INSTANCE.registerCommand(GrassPic.INSTANCE,true);
         getLogger().info("WhitrayHB's Mirai plugin successfully loaded!");
     }

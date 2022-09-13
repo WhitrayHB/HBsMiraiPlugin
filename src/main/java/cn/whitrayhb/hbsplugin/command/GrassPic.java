@@ -1,6 +1,7 @@
 package cn.whitrayhb.hbsplugin.command;
 
 import cn.whitrayhb.hbsplugin.HBsPluginMain;
+import cn.whitrayhb.hbsplugin.util.Cooler;
 import net.mamoe.mirai.console.command.CommandOwner;
 import net.mamoe.mirai.console.command.CommandSender;
 import net.mamoe.mirai.console.command.java.JRawCommand;
@@ -8,11 +9,9 @@ import net.mamoe.mirai.message.data.Image;
 import net.mamoe.mirai.message.data.MessageChain;
 import net.mamoe.mirai.utils.ExternalResource;
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -22,12 +21,21 @@ public class GrassPic extends JRawCommand {
         super(HBsPluginMain.INSTANCE,"grass-pic","来张草图","生草");
         this.setDescription("来张草图");
         this.setPrefixOptional(true);
-        this.setUsage("(/)生草 #来张草图");
+        this.setUsage("(/)生草  #来张草图");
     }
     @Override
     public void onCommand(@NotNull CommandSender sender, @NotNull MessageChain args){
+        if(Cooler.isLocked(sender)) {
+            sender.sendMessage("操作太快了，请稍后再试");
+            return;
+        }
+        Cooler.lock(sender,30);
         String savePath = "./data/cn.whitrayhb.hbsplugin/cache/grasspic/";
-        String picPath = fetchPicture("https://i.yanji.pro/grass/getImage.php",savePath);
+        //String info = fetchJson("https://i.simsoft.top/grass/backend/info");
+        //JSONObject jsonObject = new JSONObject(info);
+        //int code = jsonObject.getInt("code");
+        //jsonObject.getJSONArray("comment");
+        String picPath = fetchPicture("https://i.simsoft.top/grass/backend/image",savePath);
         if(picPath!=null){
             File file = new File(picPath);
             if(sender.getSubject()!=null) {
@@ -44,6 +52,39 @@ public class GrassPic extends JRawCommand {
             }
         }
     }
+
+    public static String fetchJson(String inURL){
+        HttpURLConnection conn;
+        InputStream is;
+        BufferedReader br;
+        StringBuilder result = new StringBuilder();
+        try{
+            java.net.URL url = new URL(inURL);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setConnectTimeout(3000);
+            conn.setReadTimeout(30000);
+            conn.setRequestProperty("Accept", "application/json");
+            conn.connect();
+            String l;
+            if(conn.getResponseCode()==200){
+                is = conn.getInputStream();
+                br = new BufferedReader(new InputStreamReader(is,"UTF-8"));
+                while ((l=br.readLine())!=null){
+                    result.append(l);
+                    return l;
+                }
+            }
+            else{
+                HBsPluginMain.INSTANCE.getLogger().error("JSON下载失败！状态码为"+conn.getResponseCode());
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     /**
      * 下载图片
      * @param inUrl 将要下载的图片的链接
@@ -56,9 +97,6 @@ public class GrassPic extends JRawCommand {
         int size;
         String[] arrUrl = inUrl.split("/");
         String name = arrUrl[arrUrl.length-1];
-        if(new File(path+"/"+name).exists()){
-            return path+"/"+name;
-        }
         try{
             File file = new File(path);
             if(!file.exists()) file.mkdirs();
