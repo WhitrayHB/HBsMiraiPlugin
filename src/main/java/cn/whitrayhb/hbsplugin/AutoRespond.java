@@ -50,12 +50,10 @@ public class AutoRespond {
             else if (message.trim().equals("114514")) g.getGroup().sendMessage("1919810");
             else if (message.trim().equals("1919810")) g.getGroup().sendMessage("114514");
             else if ((message.trim().equals("小鸽子")||message.trim().equals("怀鸽"))) g.getGroup().sendMessage(randomMessage(messagePool));
-            else if (message.contains("炖鸽子") ||message.contains("烤鸽子")||message.matches("(\\S+|\\S?)撅(\\S?|[a-z,A-Z]+)鸽子(\\S+|\\S?)")) g.getGroup().sendMessage("我先把你撅爆再说（恼）");
-            else if (message.contains("恼")&&Math.random()*100>=85) g.getGroup().sendMessage("就你恼鬼是吧");
+            else if (message.contains("炖鸽子") ||message.contains("烤鸽子")||message.matches("(\\S+|\\S?)撅(\\S?|[a-z,A-Z]+)(鸽子|小鸽子)(\\S+|\\S?)")) g.getGroup().sendMessage("我先把你撅爆再说（恼）");
+            else if (message.contains("恼")&&Math.random()*100>=85&&g.getGroup().getId()!=218335447) g.getGroup().sendMessage("就你恼鬼是吧");
             else if (message.contains("鸽子")&&Math.random()*100>=75) g.getGroup().sendMessage("谁叫我");
             else if (message.contains("咕咕咕")&&Math.random()*100>=75) g.getGroup().sendMessage("咕咕咕~");
-            //
-                // else if (message.contains("烈烈")&&Math.random()*100>=25) g.getGroup().sendMessage("bt烈烈！");
             else if ((message.contains("内卷")||message.contains("卷王"))&&Math.random()*100>=25) g.getGroup().sendMessage("哪个卷王又在卷了啊——");
             else if (Math.random()*100>=99.99) {g.getGroup().sendMessage(new MessageChainBuilder().append(new At(g.getSender().getId())).append("今天你就是万里挑一被选中的人！开心一点，老天爷都在眷顾你呢，做什么都一定会如意的！").build());HBsPluginMain.INSTANCE.getLogger().info("我去，万里挑一！！！！！");}
         });
@@ -138,10 +136,12 @@ public class AutoRespond {
             "为什么泡泡姬（@FurServer）吹出来的泡泡会是黑的呢",
             "老佛爷（@和佛）驾到——",
             "谢谢你，水老师（@水繁）",
-            "这@小银草莓……是外星来的！！！",
+            "这 @小银 草莓……是外星来的！！！",
             "什么？我在干啥？我在思考真相（@ThinkingTruth）",
             "C4的反义词是什么？B0还是@碧凌",
+            "来点礵U藻贽?……啊不，晗亱?脻褅吗",
             "我们请 @洛可可 同学起来回答一下问题",
+            "刚剥好的@雪橙，来点？",
             "IntelliJ IDEA 好！",
             "要不要来世界最大同性恋交友网站（https://github.com)康康？",
             "翎迹网络……",
@@ -160,6 +160,12 @@ public class AutoRespond {
             "想烤我？先抓住再说！",
             "好无聊……",
             "La dadada~",
-            "Pigeon pigeon = new Pigeon();"
+            "Pigeon pigeon = new Pigeon();",
+            "“小鸽子被撕碎了，凶手是仙人球”",
+            "Life goes on and on and on and on and, on and on and on",
+            "你只有 一次机会",
+            "来rua我！",
+            "别rua我，去rua大鸽子！",
+            ""
     };
 }
