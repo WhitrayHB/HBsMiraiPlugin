@@ -80,7 +80,7 @@ public class AutoRespond {
             else if (message.contains("鸽子")&&Math.random()*100>=75) sender.sendMessage("谁叫我");
             else if (message.contains("咕咕咕")&&Math.random()*100>=75) sender.sendMessage("咕咕咕~");
             else if ((message.contains("内卷")||message.contains("卷王"))&&Math.random()*100>=25) sender.sendMessage("哪个卷王又在卷了啊——");
-            else if (Math.random()*100>=99.99) {sender.sendMessage(new MessageChainBuilder().append(new At(sender.getId())).append("今天你就是万里挑一被选中的人！开心一点，老天爷都在眷顾你呢，做什么都一定会如意的！").build());HBsPluginMain.INSTANCE.getLogger().info("我去，万里挑一！！！！！");}
+            else if (Math.random()*100>=99.99) {sender.sendMessage(new MessageChainBuilder().append(new At(sender.getId())).append(" 今天你就是万里挑一被选中的人！开心一点，老天爷都在眷顾你呢，做什么都一定会如意的！").build());HBsPluginMain.INSTANCE.getLogger().info("我去，万里挑一！！！！！");}
         });
         eventChannel.subscribeAlways(FriendMessageEvent.class, f -> {
         });

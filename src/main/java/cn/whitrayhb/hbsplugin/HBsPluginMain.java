@@ -1,5 +1,7 @@
 package cn.whitrayhb.hbsplugin;
 
+import cn.whitrayhb.hbsplugin.command.Help;
+import net.mamoe.mirai.console.command.CommandManager;
 import net.mamoe.mirai.console.plugin.jvm.JavaPlugin;
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription;
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescriptionBuilder;
@@ -32,6 +34,7 @@ public final class HBsPluginMain extends JavaPlugin {
     @Override
     public void onEnable() {
         autoRespond.onEnable();
+        CommandManager.INSTANCE.registerCommand(Help.INSTANCE,true);
         getLogger().info("WhitrayHB's Mirai plugin successfully loaded!");
     }
 }
