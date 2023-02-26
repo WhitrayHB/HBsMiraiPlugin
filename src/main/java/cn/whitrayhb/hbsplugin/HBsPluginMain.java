@@ -1,7 +1,5 @@
 package cn.whitrayhb.hbsplugin;
 
-import cn.whitrayhb.hbsplugin.command.GrassPic;
-import net.mamoe.mirai.console.command.CommandManager;
 import net.mamoe.mirai.console.plugin.jvm.JavaPlugin;
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription;
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescriptionBuilder;
@@ -34,7 +32,6 @@ public final class HBsPluginMain extends JavaPlugin {
     @Override
     public void onEnable() {
         autoRespond.onEnable();
-        CommandManager.INSTANCE.registerCommand(GrassPic.INSTANCE,true);
         getLogger().info("WhitrayHB's Mirai plugin successfully loaded!");
     }
 }
